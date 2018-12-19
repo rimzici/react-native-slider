@@ -271,7 +271,7 @@ export default class Slider extends PureComponent {
       <View
         {...other}
         style={[mainStyles.container, style]}
-        onLayout={this._measureContainer}
+        onLayout={containerSize.width ? undefined : this._measureContainer}
       >
         <View
           style={[
@@ -280,14 +280,14 @@ export default class Slider extends PureComponent {
             trackStyle,
           ]}
           renderToHardwareTextureAndroid
-          onLayout={this._measureTrack}
+          onLayout={trackSize.width ? undefined : this._measureTrack}
         />
         <Animated.View
           renderToHardwareTextureAndroid
           style={[mainStyles.track, trackStyle, minimumTrackStyle]}
         />
         <Animated.View
-          onLayout={this._measureThumb}
+          onLayout={thumbSize.width ? undefined : this._measureThumb}
           renderToHardwareTextureAndroid
           style={[
             { backgroundColor: thumbTintColor },
